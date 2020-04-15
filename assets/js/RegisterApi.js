@@ -25,7 +25,11 @@ function performRegister(e){
     axios.post('https://tour-server-side.herokuapp.com/api/users',body,config)
         .then(function (response) {
             localStorage.setItem('token', response.data.token);
-            if(response.status===200){
+            if(response.status===200 && response.data.role==='Admin'){
+                window.location.replace("Admin/admin/index.html")
+
+            }
+            else if(response.status===200){
                 window.location.replace("be_pages_dashboard.html")
             }
 
